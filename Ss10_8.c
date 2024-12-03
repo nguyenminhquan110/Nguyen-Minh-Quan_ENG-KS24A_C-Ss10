@@ -1,36 +1,37 @@
 #include<stdio.h>
 
-int main (){
-	
-	int a[3][3] = {{9,4,5},{2,1,7},{8,3,6}};
-	int c = 0;
-	int b[9];
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
-			b[c]=a[i][j];
-			c++;
-		}
-	}
-    
-	for(int i = 0;i < 9;i++){
-		for(int j = 0;j < (9 - 1 - i);j++){
-			if(b[j + 1] < b[j]){
-				int temp = b[j];
-				b[j] = b[j + 1];
-				b[j + 1] = temp;
-			}
-		}
-	}
-	c = 0;
-	
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
-			a[i][j]=b[c];
-			c++;
-			printf("%d\t",a[i][j]);
-		}
-		printf("\n");
-	}
-	return 0;
+#include <stdio.h>
+int main() {
+    int n, m;
+    printf("Nhap so dong: ");
+    scanf("%d", &n);
+    printf("Nhap so cot: ");
+    scanf("%d", &m);
+    int arr[n][m];
+    printf("Nhap cac phan tu cua mang:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &arr[i][j]);
+        }
+        printf("------\n");
+    }
+    for (int j = 0; j < m; j++) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int k = 0; k < n - i - 1; k++) {
+                if (arr[k][j] > arr[k + 1][j]) {
+                    int temp = arr[k][j];
+                    arr[k][j] = arr[k + 1][j];
+                    arr[k + 1][j] = temp;
+                }
+            }
+        }
+    }
+    printf("Mang sau khi sap xep theo tung cot:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
 }
-
